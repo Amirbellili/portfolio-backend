@@ -4,7 +4,8 @@
   "description": "Backend API for Bellili Amir Portfolio - Contact Form & Email Service",
   "main": "dist/server.js",
 "scripts": {
-    "build": "npx tsc",
+    "dev": "tsc-watch --onSuccess \"node dist/server.js\"",
+    "build": "echo 'skip build'",
     "start": "node dist/server.js"
 },
   "keywords": [
