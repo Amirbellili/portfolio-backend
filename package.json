@@ -1,0 +1,38 @@
+{
+  "name": "portfolio-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Bellili Amir Portfolio - Contact Form & Email Service",
+  "main": "dist/server.js",
+  "scripts": {
+        "dev": "tsc-watch --onSuccess \"node dist/server.js\"",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "portfolio",
+    "backend",
+    "express",
+    "typescript",
+    "nodemailer"
+  ],
+  "author": "Bellili Amir <amirbellili12346@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "cors": "^2.8.6",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "nodemailer": "^7.0.12"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.0.10",
+    "@types/nodemailer": "^7.0.5",
+    "nodemon": "^3.1.11",
+    "ts-node": "^10.9.2",
+    "tsc-watch": "^7.2.0",
+    "typescript": "^5.9.3"
+  }
+}
