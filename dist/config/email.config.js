@@ -8,24 +8,9 @@ const nodemailer_1 = __importDefault(require("nodemailer"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const createTransporter = async () => {
-    // Pour les tests : utiliser Ethereal Email
-    if (process.env.NODE_ENV === 'development' && !process.env.EMAIL_USER) {
-        console.log('⚠️ Utilisation d\'Ethereal Email pour les tests');
-        const testAccount = await nodemailer_1.default.createTestAccount();
-        return nodemailer_1.default.createTransport({
-            host: 'smtp.ethereal.email',
-            port: 587,
-            secure: false,
-            auth: {
-                user: testAccount.user,
-                pass: testAccount.pass
-            }
-        });
-    }
-    // Configuration Gmail normale
     return nodemailer_1.default.createTransport({
         host: process.env.EMAIL_HOST,
-        port: parseInt(process.env.EMAIL_PORT || '587'),
+        port: 465,
         secure: true,
         auth: {
             user: process.env.EMAIL_USER,
