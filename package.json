@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "Backend API for Bellili Amir Portfolio - Contact Form & Email Service",
   "main": "dist/server.js",
-"scripts": {
+  "scripts": {
     "dev": "tsc-watch --onSuccess \"node dist/server.js\"",
     "build": "echo 'skip build'",
     "start": "node dist/server.js"
-},
+  },
   "keywords": [
     "portfolio",
     "backend",
@@ -22,7 +22,8 @@
     "cors": "^2.8.6",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
-    "nodemailer": "^7.0.12"
+    "nodemailer": "^7.0.12",
+    "resend": "^6.9.3"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
