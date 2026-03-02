@@ -13,18 +13,11 @@ export class ContactController {
     try {
       const formData: ContactForm = req.body;
 
-      // Envoyer l'email au propriétaire
       await this.emailService.sendContactEmail(formData);
-
-      // Envoyer un email de confirmation à l'utilisateur
-      await this.emailService.sendConfirmationEmail(
-        formData.email,
-        formData.name
-      );
 
       const response: ApiResponse = {
         success: true,
-        message: 'Message envoyé avec succès ! Vous recevrez une réponse bientôt.'
+        message: 'Message envoyé avec succès !'
       };
 
       res.status(200).json(response);
@@ -44,24 +37,9 @@ export class ContactController {
   testEmail = async (req: Request, res: Response) => {
     try {
       const isConnected = await this.emailService.verifyConnection();
-
-      if (isConnected) {
-        res.status(200).json({
-          success: true,
-          message: 'Email service is working'
-        });
-      } else {
-        res.status(500).json({
-          success: false,
-          message: 'Email service is not configured properly'
-        });
-      }
+      res.status(200).json({ success: true, message: 'Email service is working' });
     } catch (error) {
-      res.status(500).json({
-        success: false,
-        message: 'Error testing email service',
-        error: error instanceof Error ? error.message : 'Unknown error'
-      });
+      res.status(500).json({ success: false, message: 'Error testing email service' });
     }
   };
 }

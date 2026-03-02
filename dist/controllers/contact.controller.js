@@ -7,13 +7,10 @@ class ContactController {
         this.sendContactMessage = async (req, res) => {
             try {
                 const formData = req.body;
-                // Envoyer l'email au propriétaire
                 await this.emailService.sendContactEmail(formData);
-                // Envoyer un email de confirmation à l'utilisateur
-                await this.emailService.sendConfirmationEmail(formData.email, formData.name);
                 const response = {
                     success: true,
-                    message: 'Message envoyé avec succès ! Vous recevrez une réponse bientôt.'
+                    message: 'Message envoyé avec succès !'
                 };
                 res.status(200).json(response);
             }
@@ -30,25 +27,10 @@ class ContactController {
         this.testEmail = async (req, res) => {
             try {
                 const isConnected = await this.emailService.verifyConnection();
-                if (isConnected) {
-                    res.status(200).json({
-                        success: true,
-                        message: 'Email service is working'
-                    });
-                }
-                else {
-                    res.status(500).json({
-                        success: false,
-                        message: 'Email service is not configured properly'
-                    });
-                }
+                res.status(200).json({ success: true, message: 'Email service is working' });
             }
             catch (error) {
-                res.status(500).json({
-                    success: false,
-                    message: 'Error testing email service',
-                    error: error instanceof Error ? error.message : 'Unknown error'
-                });
+                res.status(500).json({ success: false, message: 'Error testing email service' });
             }
         };
         this.emailService = new email_service_1.EmailService();

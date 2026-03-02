@@ -6,6 +6,13 @@ const resend = new resend_1.Resend(process.env.RESEND_API_KEY);
 class EmailService {
     async sendContactEmail(formData) {
         const { name, email, subject, message } = formData;
+        const now = new Date();
+        const date = now.toLocaleDateString('fr-FR', {
+            day: '2-digit', month: '2-digit', year: 'numeric'
+        });
+        const time = now.toLocaleTimeString('fr-FR', {
+            hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+        });
         await resend.emails.send({
             from: 'onboarding@resend.dev',
             to: 'amirbellili123456@gmail.com',
@@ -33,7 +40,7 @@ class EmailService {
             </div>
             <div style="text-align:center;margin-top:20px;color:#666;font-size:12px;">
               <p>Ce message a été envoyé depuis votre portfolio Bellili Amir</p>
-              <p>Date : ${new Date().toLocaleString('fr-FR')}</p>
+              <p>Date : ${date} à ${time}</p>
             </div>
           </div>
         </div>
@@ -41,27 +48,8 @@ class EmailService {
         });
     }
     async sendConfirmationEmail(email, name) {
-        await resend.emails.send({
-            from: 'onboarding@resend.dev',
-            to: email,
-            subject: '✅ Confirmation - Bellili Amir Portfolio',
-            html: `
-        <div style="max-width:600px;margin:0 auto;font-family:Arial,sans-serif;">
-          <div style="background:linear-gradient(135deg,#ff0055,#cc0044);color:white;padding:40px;text-align:center;border-radius:10px 10px 0 0;">
-            <h1 style="margin:0;">✅ Message Reçu !</h1>
-          </div>
-          <div style="background:white;padding:40px;border:1px solid #ddd;border-radius:0 0 10px 10px;">
-            <h2>Merci ${name} !</h2>
-            <p>J'ai bien reçu votre message et je vous répondrai dans les plus brefs délais.</p>
-            <p style="margin-top:30px;color:#666;">
-              Cordialement,<br>
-              <strong>Bellili Amir</strong><br>
-              Full Stack Developer & UI/UX Designer
-            </p>
-          </div>
-        </div>
-      `
-        });
+        // Désactivé sur plan gratuit Resend
+        console.log(`Confirmation skipped for ${name} (${email})`);
     }
     async verifyConnection() {
         return true;
