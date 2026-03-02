@@ -8,10 +8,13 @@ class EmailService {
         const { name, email, subject, message } = formData;
         const now = new Date();
         const date = now.toLocaleDateString('fr-FR', {
-            day: '2-digit', month: '2-digit', year: 'numeric'
+            day: '2-digit', month: '2-digit', year: 'numeric',
+            timeZone: 'Africa/Tunis'
         });
         const time = now.toLocaleTimeString('fr-FR', {
-            hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+            hour: '2-digit', minute: '2-digit', second: '2-digit',
+            hour12: false,
+            timeZone: 'Africa/Tunis'
         });
         await resend.emails.send({
             from: 'onboarding@resend.dev',
