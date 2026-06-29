@@ -18,8 +18,8 @@ const validateContactForm = (req, res, next) => {
         errors.push('Le sujet doit contenir au moins 3 caractères');
     }
     // Validation du message
-    if (!message || message.trim().length < 10) {
-        errors.push('Le message doit contenir au moins 10 caractères');
+    if (!message || message.trim().length < 3) {
+        errors.push('Le message doit contenir au moins 3 caractères');
     }
     if (errors.length > 0) {
         return res.status(400).json({

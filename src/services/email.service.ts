@@ -1,8 +1,10 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import { Resend } from 'resend';
 import { ContactForm } from '../types/contact.types';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-
 export class EmailService {
   async sendContactEmail(formData: ContactForm): Promise<void> {
     const { name, email, subject, message } = formData;
