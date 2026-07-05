@@ -5,7 +5,7 @@
   "main": "dist/server.js",
   "scripts": {
     "dev": "tsc-watch --onSuccess \"node dist/server.js\"",
-    "build": "npm install && npx tsc",
+    "build": "npm install --include=dev && npx tsc",
     "start": "node dist/server.js"
   },
   "keywords": [
