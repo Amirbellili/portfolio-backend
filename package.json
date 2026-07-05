@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Backend API for Bellili Amir Portfolio - Contact Form & Email Service",
   "main": "dist/server.js",
-"scripts": {
+  "scripts": {
     "dev": "tsc-watch --onSuccess \"node dist/server.js\"",
     "build": "npm install && npx tsc",
     "start": "node dist/server.js"
@@ -28,8 +28,8 @@
   "devDependencies": {
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
-    "@types/node": "^25.0.10",
-    "@types/nodemailer": "^7.0.5",
+    "@types/node": "^25.9.4",
+    "@types/nodemailer": "^7.0.12",
     "nodemon": "^3.1.11",
     "ts-node": "^10.9.2",
     "tsc-watch": "^7.2.0",
